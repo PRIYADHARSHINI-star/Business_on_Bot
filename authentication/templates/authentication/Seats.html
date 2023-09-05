@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+<head>
+    <title>Seat Booking</title>
+    <link rel="stylesheet" href="{% static 'authentication/css/seats.css' %}" type="text/css">
+</head>
+<body>
+<style>
+    .selected-movie {
+        font-size: larger;
+        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        font-weight: bold;
+    }
+    /* Style for the button */
+    .proceed-button {
+        background-color: #007BFF; /* Change the background color to your preferred color */
+        color: #fff; /* Change the text color to white */
+        border: none; /* Remove border */
+        padding: 10px 20px; /* Add padding to the button */
+        font-size: 16px; /* Change the font size */
+        cursor: pointer; /* Add a pointer cursor on hover */
+        border-radius: 5px; /* Add rounded corners */
+    }
+
+    /* Style for the button on hover */
+    .proceed-button:hover {
+        background-color: #0056b3; /* Change the background color on hover */
+    }
+</style>
+<div class="box">
+    <div class="selected-movie">
+        <h1> Movie Selected : {{selected_movie_name}}</h1>
+        <span id="selected-movie-name">{{selected_movie_name}}</span>
+    </div>
+    <ul class="showcase">
+        <li>
+            <div class="seat">
+            </div>
+            <small>N/A</small>
+        </li>
+        <li>
+            <div class="seat selected"></div>
+            <small>Selected</small>
+        </li>
+        <li>
+            <div class="seat occupied"></div>
+            <small>Occupied</small>
+        </li>
+    </ul>
+
+    <div class="container">
+        <div class="screen"></div>
+        <div class="row">
+          <div class="seat"></div>
+          <div class="seat"></div>
+          <div class="seat"></div>
+          <div class="seat"></div>
+          <div class="seat"></div>
+          <div class="seat"></div>
+          <div class="seat"></div>
+          <div class="seat"></div>
+          <div class="seat"></div>
+          <div class="seat"></div>
+          <div class="seat"></div>
+          <div class="seat"></div>
+
+        </div>
+        <div class="row">
+          <div class="seat"></div>
+          <div class="seat"></div>
+          <div class="seat"></div>
+          <div class="seat"></div>
+          <div class="seat"></div>
+          <div class="seat"></div>
+          <div class="seat"></div>
+          <div class="seat"></div>
+          <div class="seat"></div>
+          <div class="seat"></div>
+          <div class="seat"></div>
+          <div class="seat"></div>
+
+        </div>
+
+        <div class="row">
+          <div class="seat"></div>
+          <div class="seat"></div>
+          <div class="seat"></div>
+          <div class="seat occupied"></div>
+          <div class="seat occupied"></div>
+          <div class="seat"></div>
+          <div class="seat"></div>
+          <div class="seat"></div>
+          <div class="seat"></div>
+          <div class="seat"></div>
+          <div class="seat"></div>
+          <div class="seat"></div>
+
+        </div>
+  
+        <div class="row">
+          <div class="seat"></div>
+          <div class="seat"></div>
+          <div class="seat"></div>
+          <div class="seat"></div>
+          <div class="seat"></div>
+          <div class="seat"></div>
+          <div class="seat"></div>
+          <div class="seat occupied"></div>
+          <div class="seat occupied"></div>
+          <div class="seat"></div>
+          <div class="seat"></div>
+          <div class="seat"></div>
+        </div>
+  
+        <div class="row">
+          <div class="seat"></div>
+          <div class="seat"></div>
+          <div class="seat"></div>
+          <div class="seat"></div>
+          <div class="seat"></div>
+          <div class="seat"></div>
+          <div class="seat"></div>
+          <div class="seat"></div>
+          <div class="seat"></div>
+          <div class="seat"></div>
+          <div class="seat"></div>
+          <div class="seat"></div>
+        </div>
+        <div class="row">
+          <div class="seat"></div>
+          <div class="seat"></div>
+          <div class="seat"></div>
+          <div class="seat"></div>
+          <div class="seat"></div>
+          <div class="seat"></div>
+          <div class="seat"></div>
+          <div class="seat"></div>
+          <div class="seat"></div>
+          <div class="seat"></div>
+          <div class="seat"></div>
+          <div class="seat"></div>
+        </div>
+  
+        <div class="row">
+          <div class="seat"></div>
+          <div class="seat"></div>
+          <div class="seat"></div>
+          <div class="seat"></div>
+          <div class="seat occupied"></div>
+          <div class="seat occupied"></div>
+          <div class="seat"></div>
+          <div class="seat"></div>
+          <div class="seat"></div>
+          <div class="seat"></div>
+          <div class="seat"></div>
+          <div class="seat"></div>
+        </div>
+  
+        <div class="row">
+          <div class="seat"></div>
+          <div class="seat"></div>
+          <div class="seat"></div>
+          <div class="seat"></div>
+          <div class="seat"></div>
+          <div class="seat"></div>
+          <div class="seat"></div>
+          <div class="seat"></div>
+          <div class="seat"></div>
+          <div class="seat"></div>
+          <div class="seat"></div>
+          <div class="seat"></div>
+        </div>
+    </div>
+</div>
+<p class="text">
+    You have selected <span id="count">0</span> seats for a price of $<span id="total">0</span>
+</p>
+<button id="proceed-button" class="proceed-button">Proceed</button>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    const container = document.querySelector('.container');
+    const seats = document.querySelectorAll('.row .seat:not(.occupied)');
+    const count = document.getElementById('count');
+    const total = document.getElementById('total');
+
+    // Set the selected movie name in the UI
+    const selectedMovieName = document.getElementById('selected-movie-name');
+    selectedMovieName.textContent = localStorage.getItem('selected_movie_name'); // Set the selected movie name
+
+    // Define the fixed ticket price (you can adjust this as needed)
+    const ticketPrice = 10; // $10 per seat
+
+    // Save selected movie index and price
+    function setMovieData(movieIndex, moviePrice) {
+        localStorage.setItem('selectedMovieIndex', movieIndex);
+        localStorage.setItem('selectedMoviePrice', moviePrice);
+    }
+
+    // Update total and count
+    function updateSelectedCount() {
+        const selectedSeats = document.querySelectorAll('.row .seat.selected');
+
+        const seatsIndex = [...selectedSeats].map((seat) => [...seats].indexOf(seat));
+
+        localStorage.setItem('selectedSeats', JSON.stringify(seatsIndex));
+
+        const selectedSeatsCount = selectedSeats.length;
+
+        count.innerText = selectedSeatsCount;
+        total.innerText = selectedSeatsCount * ticketPrice;
+
+        return {
+            totalAmount: selectedSeatsCount * ticketPrice,
+            selectedSeatsCount: selectedSeatsCount,
+        };
+    }
+
+    // Seat click event
+    container.addEventListener('click', (e) => {
+        if (e.target.classList.contains('seat') && !e.target.classList.contains('occupied')) {
+            e.target.classList.toggle('selected');
+            updateSelectedCount();
+        }
+    });
+
+    // Initial count and total
+    updateSelectedCount();
+
+    const proceedButton = document.getElementById('proceed-button');
+    proceedButton.addEventListener('click', () => {
+    const selectedSeatsCount = document.querySelectorAll('.row .seat.selected').length;
+    const ticketPrice = 10; // Adjust this as needed
+    const totalAmount = selectedSeatsCount * ticketPrice;
+
+    // Store the values in Local Storage
+    localStorage.setItem('selected_movie_name','{{selected_movie_name}}');
+    localStorage.setItem('selectedSeatsCount', selectedSeatsCount);
+    localStorage.setItem('totalAmount', totalAmount);
+
+    // Redirect to report.html
+    window.location.href = "{% url 'report' %}";
+});
+</script>
+</body>
+</html>

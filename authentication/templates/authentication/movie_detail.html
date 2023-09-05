@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+<head>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <title>Movie Description</title>
+    <style type="text/css">
+        body {
+            background-image: url("{% static 'authentication/css/seat2.jpg' %}");
+            background-repeat: no-repeat;
+            background-size: cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .movie-container {
+            display: flex;
+            background-color: rgba(255, 255, 255, 0.7);
+            border-radius: 10px;
+            padding: 20px;
+            width: 800px;
+            font-weight: bolder;
+            color: rgb(209, 55, 4);
+            font-size: larger;
+        }
+
+        .movie-image {
+            flex: 1;
+            margin-right: 20px;
+        }
+
+        .movie-image img {
+            width: 100%;
+            max-width: 350px;
+            height: auto;
+        }
+
+        .movie-info {
+            flex: 2;
+        }
+
+        .movie-info table {
+            width: 100%;
+        }
+
+        .movie-info th, .movie-info td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .movie-info th {
+            background-color: #f2f2f2;
+        }
+        .buttons {
+            margin-top: 20px;
+            text-align: center;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .buttons a {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #007BFF;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+            width:30px
+        }
+
+        .buttons a:hover {
+            background-color: #0056b3;}
+    </style>
+</head>
+<body>
+    <div class="movie-container">
+        <div class="movie-image">
+            <img src="{{ movie.URL }}" alt="{{ movie.Movie_Name }}">
+        </div>
+        <div class="movie-info">
+            <h2>Movie Information</h2>
+            <table>
+                <tr>
+                    <th>ID</th>
+                    <td>{{ movie.id }}</td>
+                </tr>
+                <tr>
+                    <th>Movie Name</th>
+                    <td>{{ movie.Movie_Name }}</td>
+                </tr>
+                <tr>
+                    <th>Theatre Name</th>
+                    <td>{{ movie.Theatre_Name }}</td>
+                </tr>
+                <tr>
+                    <th>Location</th>
+                    <td>{{ movie.Theatre_Location }}</td>
+                </tr>
+                <tr>
+                    <th>Release Date</th>
+                    <td>{{ movie.Release_Date }}</td>
+                </tr>
+                <!-- Add more table rows for additional details -->
+            </table>
+            <div class="buttons">
+            <div class="book-now-button">
+                <a href="{% url 'login' movie.Movie_Name %}">Login</a>
+            </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

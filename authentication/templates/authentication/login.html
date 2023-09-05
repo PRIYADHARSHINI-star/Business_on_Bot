@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang= "en">
+    <head>
+        <title>
+            Login and Registration Form
+        </title>
+        <link rel="stylesheet" href="{% static 'authentication/css/login.css' %}" type="text/css">
+    </head>
+    <body>
+        <div class="container">
+          <div class="center">
+              <h1>Login</h1>
+              <form action="{% url 'login' movie_name=selected_movie_name %}" method="POST">
+                {% csrf_token %}
+                  <div class="txt_field">
+                      <input type="email" name="mail" required>
+                      <span></span>
+                      <label>Email ID</label>
+                  </div>
+                  <div class="txt_field">
+                      <input type="password" name="pswrd" required>
+                      <span></span>
+                      <label>Password</label>
+                  </div>
+                  <div class="pass">Forget Password?</div>
+                  <input name="submit" type="Submit" value="Book Now >>">
+                  <div class="signup_link">
+                    <p class="register">Not a member?  <a href="{% url 'register' movie_name=selected_movie_name %}">Register here!</a></p>
+                  </div>
+              </form>
+          </div>
+        </div>
+      </body>
+</html>

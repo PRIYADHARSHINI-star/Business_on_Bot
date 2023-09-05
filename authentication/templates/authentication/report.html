@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Booking Report</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f3f3f3;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+        }
+
+        h1 {
+            font-size: 28px;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            font-size: 20px;
+            color: #555;
+            margin-bottom: 10px;
+        }
+
+        p {
+            font-size: 18px;
+            color: #777;
+        }
+
+        .total {
+            font-weight: bold;
+            color: #333;
+            font-size: 24px;
+        }
+
+        .details {
+            margin-top: 30px;
+        }
+
+        /* Style for a separator line */
+        .separator {
+            border-top: 2px solid #ccc;
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+
+        /* Additional styling can be added as needed */
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Booking Report</h1>
+        
+        <h2>Movie Information</h2>
+        <p>Selected Movie: <span class="total" id="selected_movie"></span></p>
+        <div class="separator"></div>
+
+        <h2>Booking Details</h2>
+        <div class="details">
+            <p>Number of Seats Booked: <span class="total" id="selected_seats_count"></span></p>
+            <p>Total Amount: <span class="total" id="total_amount"></span></p>
+        </div>
+
+        <!-- Add any additional information or formatting you need -->
+
+    </div>
+    <script>
+        // Retrieve the values from Local Storage and display them
+        const selected_movie_name = localStorage.getItem('selected_movie_name')
+        const selectedSeatsCount = localStorage.getItem('selectedSeatsCount');
+        const totalAmount = localStorage.getItem('totalAmount');
+
+        document.getElementById('selected_movie').textContent = selected_movie_name;
+        document.getElementById('selected_seats_count').textContent = selectedSeatsCount;
+        document.getElementById('total_amount').textContent = '$' + totalAmount;
+    </script>
+</body>
+</html>
