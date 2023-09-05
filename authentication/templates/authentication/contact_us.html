@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us</title>
+    <link rel="stylesheet" href="contact_us.css">
+</head>
+<body>
+    <header>
+        <h1>Contact Us</h1>
+    </header>
+    <div class="contact-container">
+        <section class="company-info">
+            <h2>Company Information</h2>
+            <address>
+                <p>Cinemax private ltd.</p><br>
+                <p>123 lakshmi Nagar</p><br>
+                <p>Chennai, TamilNadu, 641111</p><br>
+                <p>Email: info@example.com</p><br>
+                <p>Phone: +91 (223) 456-7890</p>
+            </address>
+        </section>
+        <section class="contact-form">
+            <h2>Send us a message</h2>
+            <form id="contact-form">
+                <div class="form-group">
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">Message:</label>
+                    <textarea id="message" name="message" rows="4" required></textarea>
+                </div>
+                <button type="submit">Send</button>
+            </form>
+        </section>
+    </div>
+    <script src="contact_us.js"></script>
+</body>
+</html>
