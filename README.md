@@ -13,6 +13,7 @@
 
 # HOME PAGE
 ![image](https://github.com/PRIYADHARSHINI-star/Business_on_Bot/assets/72924709/3258df6b-ea00-4a99-97ea-d9952916cf3d)
+![image](https://github.com/PRIYADHARSHINI-star/Business_on_Bot/assets/72924709/8a7a3118-a690-43ee-9181-422eb6650712)
 
 # MOVIE DESCRIPTION PAGE
 ![image](https://github.com/PRIYADHARSHINI-star/Business_on_Bot/assets/72924709/d018be51-4051-4fee-aff4-013b926d3683)
@@ -35,6 +36,10 @@
 
 # DATABASE FOR MOVIE DETAILS
 ![image](https://github.com/PRIYADHARSHINI-star/Business_on_Bot/assets/72924709/8709962e-b027-4809-b416-a466b0c0233d)
+
+# CONTACT US PAGE
+![image](https://github.com/PRIYADHARSHINI-star/Business_on_Bot/assets/72924709/061bc023-1ae0-4716-abd5-c6a7ad93195b)
+
 
 
 
